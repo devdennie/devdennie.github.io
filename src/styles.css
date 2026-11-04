@@ -119,6 +119,35 @@ a {
   padding-block: 3.5rem 2.5rem;
 }
 
+.hero-grid {
+  display: grid;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.hero-figure {
+  margin: 0;
+}
+
+.hero-frame {
+  border: 1px solid var(--border);
+  border-radius: 1.75rem;
+  padding: clamp(0.4rem, 1.5vw, 1rem);
+}
+
+.hero-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 960px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 3rem;
+  }
+}
+
 .band {
   border-top: 1px solid var(--border);
   padding-block: 2.5rem;
