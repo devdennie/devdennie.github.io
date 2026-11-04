@@ -160,6 +160,54 @@ a {
   transform: translateY(0.05em);
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.75rem 1.2rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.button svg {
+  flex: 0 0 auto;
+}
+
+.button-primary {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--bg);
+}
+
+.button-primary:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+.button-secondary {
+  background: transparent;
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.button-secondary:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
 .hero-grid {
   display: grid;
   gap: 2.25rem;
