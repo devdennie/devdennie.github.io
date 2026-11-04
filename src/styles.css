@@ -285,6 +285,19 @@ a {
 }
 
 @media (min-width: 800px) {
+  .about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-layout .prose {
+    margin-top: 0.4rem;
+  }
+}
+
+@media (min-width: 800px) {
   .value-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
