@@ -1,0 +1,29 @@
+:root {
+  --bg: #13140f;
+  --text: #fcfdf8;
+  --muted: #b7b8b0;
+  --lime: #f0f850;
+  --violet: #a078f8;
+  --border: #2a2a26;
+  --display: "Bricolage Grotesque", "Arial Black", Impact, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+h1,
+h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
