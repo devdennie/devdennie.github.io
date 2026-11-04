@@ -24,6 +24,18 @@ npm run preview
 
 The preview serves `dist` at http://localhost:4173/
 
+## Test
+
+```bash
+npm test
+```
+
+The test builds the site and checks that each project has a title, a description and a valid link, that the hero alt text is present, and that the page does not load external scripts, an email address, a phone link or LinkedIn. Google Fonts is the only external resource.
+
+## Deploy
+
+Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). The workflow installs dependencies, runs the test, builds, and deploys `dist` to GitHub Pages. In the repository settings, the Pages source is GitHub Actions.
+
 ## Licence
 
 [MIT](LICENSE). Copyright (c) 2026 Dennis Kabaso.
