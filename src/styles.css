@@ -243,6 +243,47 @@ a {
   scroll-margin-top: 8.5rem;
 }
 
+.value-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.value-grid h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.value-grid p {
+  max-width: 28ch;
+  color: var(--muted);
+}
+
+@media (min-width: 800px) {
+  .value-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .value-grid article {
+    padding-inline: 1.75rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .value-grid article:first-of-type {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .value-grid article:last-of-type {
+    padding-right: 0;
+  }
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
 }
