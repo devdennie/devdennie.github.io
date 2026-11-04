@@ -292,8 +292,16 @@ a {
     align-items: start;
   }
 
-  .about-layout .prose {
+  .about-layout .prose,
+  .contact-layout .prose {
     margin-top: 0.4rem;
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: 3rem;
+    align-items: start;
   }
 }
 
