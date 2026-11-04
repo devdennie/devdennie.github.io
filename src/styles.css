@@ -150,6 +150,16 @@ a {
   font-size: 1.125rem;
 }
 
+.cursor {
+  display: inline-block;
+  width: 0.42em;
+  height: 0.68em;
+  margin-left: 0.08em;
+  background: var(--lime);
+  vertical-align: baseline;
+  transform: translateY(0.05em);
+}
+
 .hero-grid {
   display: grid;
   gap: 2.25rem;
