@@ -49,6 +49,17 @@ h2 {
   font-size: clamp(2rem, 4vw, 3rem);
 }
 
+.eyebrow {
+  margin: 0 0 1.5rem;
+  color: var(--lime);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
 p {
   margin: 0;
 }
@@ -246,7 +257,6 @@ a {
 .value-grid {
   display: grid;
   gap: 2rem;
-  margin-top: 2rem;
 }
 
 .value-grid h3 {
