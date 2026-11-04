@@ -107,6 +107,8 @@ a {
   font-weight: 600;
   text-decoration: none;
   border-radius: 999px;
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
 }
 
 .visually-hidden {
