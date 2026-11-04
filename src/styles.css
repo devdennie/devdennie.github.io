@@ -318,6 +318,12 @@ a {
   }
 }
 
+.section-intro {
+  margin-top: 1rem;
+  max-width: 46rem;
+  color: var(--muted);
+}
+
 .project-list {
   display: grid;
   gap: 1rem;
