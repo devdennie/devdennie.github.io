@@ -263,6 +263,17 @@ a {
   color: var(--muted);
 }
 
+.prose {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.prose p {
+  max-width: 62ch;
+  color: var(--muted);
+}
+
 @media (min-width: 800px) {
   .value-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
