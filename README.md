@@ -1,6 +1,6 @@
 # devdennie.github.io
 
-Personal portfolio of Dennis Kabaso, CS student at NIPA, founder & CEO of D3VCorp.
+Personal portfolio of Dennis Kabaso, a final-year Computer Science student at NIPA seeking an IT internship.
 
 The site is a static [Vite](https://vite.dev/) app. It is served from the repository root (`base: '/'`).
 

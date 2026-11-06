@@ -2,7 +2,7 @@
   "name": "devdennie-github-io",
   "private": true,
   "version": "1.0.0",
-  "description": "Personal portfolio of Dennis Kabaso, a Computer Science student at NIPA and founder & CEO of D3VCorp.",
+  "description": "Personal portfolio of Dennis Kabaso, a final-year Computer Science student at NIPA seeking an IT internship.",
   "type": "module",
   "scripts": {
     "dev": "vite",

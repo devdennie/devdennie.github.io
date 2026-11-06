@@ -151,6 +151,12 @@ a {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
+  gap: 0.35rem;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   text-decoration: none;
 }
 

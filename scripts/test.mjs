@@ -29,10 +29,10 @@ for (const id of ['main', 'work', 'about', 'projects', 'contact']) {
 }
 
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
-assert(collapsed.includes('D3VCorp'), 'missing D3VCorp');
 assert(collapsed.includes('NIPA'), 'missing NIPA');
 assert(collapsed.includes('ICTAZ'), 'missing ICTAZ');
-assert(html.includes('alt="D3VCorp terminal prompt illustration"'), 'hero alt text is missing or changed');
+assert(html.includes('alt="Terminal prompt illustration"'), 'hero alt text is missing or changed');
+assert(!/D3VCorp|founder|\bCEO\b/i.test(collapsed), 'founder, CEO, and D3VCorp wording are not allowed');
 assert(collapsed.includes('Skip to content'), 'missing the skip link');
 assert((html.match(/badge-demo/g) || []).length === 2, 'the two sites should be labelled Demo');
 
