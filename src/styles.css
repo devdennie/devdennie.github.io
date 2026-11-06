@@ -446,6 +446,12 @@ a {
   background: var(--violet);
 }
 
+.badge-course {
+  background: transparent;
+  color: var(--lime);
+  box-shadow: inset 0 0 0 1.5px var(--lime);
+}
+
 .project-links {
   display: flex;
   flex-wrap: wrap;

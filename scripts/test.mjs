@@ -37,7 +37,7 @@ assert(collapsed.includes('Skip to content'), 'missing the skip link');
 assert((html.match(/badge-demo/g) || []).length === 2, 'the two sites should be labelled Demo');
 
 const cards = [...html.matchAll(/<article class="project-card">([\s\S]*?)<\/article>/g)].map((match) => match[1]);
-assert(cards.length === 5, `expected 5 project cards, found ${cards.length}`);
+assert(cards.length === 6, `expected 6 project cards, found ${cards.length}`);
 
 for (const card of cards) {
   const title = card.match(/<h3>([^<]+)<\/h3>/)?.[1]?.trim();
@@ -66,6 +66,7 @@ const requiredLinks = [
   'https://github.com/devdennie/bookit-lusaka',
   'https://github.com/devdennie/lusaka-road-safety-analysis',
   'https://github.com/devdennie/lusaka-food-prices-analysis',
+  'https://github.com/devdennie/simple-chatroom',
   'https://github.com/devdennie/lusaka-air-quality-analysis',
   'https://github.com/devdennie',
 ];
