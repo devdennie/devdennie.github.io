@@ -74,11 +74,24 @@ for (const link of requiredLinks) {
   assert(html.includes(link), `missing link ${link}`);
 }
 
-assert(!/mailto:/i.test(html), 'an email link is not allowed');
-assert(!/tel:/i.test(html), 'a phone link is not allowed');
+assert(html.includes('href="mailto:Dennis.kabaso03@gmail.com"'), 'missing the email link');
+assert(html.includes('href="https://wa.me/260767488673"'), 'missing the WhatsApp link');
+assert(html.includes('href="https://www.instagram.com/dennienotdennis/"'), 'missing the Instagram link');
+assert(html.includes('+260 767 488 673'), 'missing the displayed WhatsApp number');
+
+const withoutAllowedEmail = html.replaceAll('mailto:Dennis.kabaso03@gmail.com', '').replaceAll('Dennis.kabaso03@gmail.com', '');
+assert(!/mailto:/i.test(withoutAllowedEmail), 'an unexpected email link is not allowed');
+assert(!/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(withoutAllowedEmail), 'an unexpected email address is not allowed');
+
+const withoutAllowedPhone = html
+  .replaceAll('https://wa.me/260767488673', '')
+  .replaceAll('+260 767 488 673', '');
+assert(!/tel:/i.test(withoutAllowedPhone), 'a phone link is not allowed');
+assert(!/wa\.me/i.test(withoutAllowedPhone), 'an unexpected WhatsApp link is not allowed');
+assert(!/\+\d[\d\s()-]{6,}\d/.test(withoutAllowedPhone), 'an unexpected phone number is not allowed');
+
 assert(!/linkedin/i.test(html), 'a LinkedIn link is not allowed');
 assert(!/<form[\s>]/i.test(html), 'a contact form is not allowed');
-assert(!/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(html), 'an email address is not allowed');
 
 const stylesheetTags = [...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/gi)].map((match) => match[0]);
 for (const tag of stylesheetTags) {
