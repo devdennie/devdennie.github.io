@@ -1,6 +1,6 @@
 # devdennie.github.io
 
-Personal portfolio of Dennis Kabaso, a final-year Computer Science student at NIPA seeking an IT internship.
+Personal portfolio of Dennis Kabaso, a final-year Computer Science student at NIPA.
 
 It is served from the repository root (`base: '/'`).
 
