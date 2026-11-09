@@ -32,6 +32,8 @@ assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
 assert(collapsed.includes('NIPA'), 'missing NIPA');
 assert(collapsed.includes('ICTAZ'), 'missing ICTAZ');
 assert(html.includes('alt="Terminal prompt illustration"'), 'hero alt text is missing or changed');
+assert(html.includes('alt="Portrait of Dennis Kabaso"'), 'portrait alt text is missing');
+assert(html.includes('src="/assets/hero/dennis-portrait.webp"'), 'portrait image path is missing');
 assert(!/D3VCorp|founder|\bCEO\b/i.test(collapsed), 'founder, CEO, and D3VCorp wording are not allowed');
 assert(collapsed.includes('Skip to content'), 'missing the skip link');
 assert((html.match(/badge-demo/g) || []).length === 2, 'the two sites should be labelled Demo');
@@ -110,6 +112,7 @@ function walk(dir, found = []) {
 }
 
 const dist = join(root, 'dist');
+assert(existsSync(join(dist, 'assets', 'hero', 'dennis-portrait.webp')), 'portrait file was not copied into dist');
 for (const path of existsSync(dist) ? walk(dist) : []) {
   if (!['.html', '.css', '.js'].includes(extname(path))) continue;
   const text = readFileSync(path, 'utf8');
