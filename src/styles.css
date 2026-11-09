@@ -309,6 +309,18 @@ a {
   }
 }
 
+.hero-visuals {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+.hero-portrait {
+  display: block;
+  width: min(100%, 320px);
+  height: auto;
+}
+
 .band {
   border-top: 1px solid var(--border);
   padding-block: 2.5rem;
