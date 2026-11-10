@@ -48,6 +48,20 @@ assert(
   'nav should run Projects, Skills, About, then Contact',
 );
 
+const skillSection = html.slice(html.indexOf('id="work"'), html.indexOf('id="about"'));
+const chipBlocks = [...skillSection.matchAll(/<ul class="skill-chips">([\s\S]*?)<\/ul>/g)];
+assert(chipBlocks.length === 6, `expected 6 skill groups, found ${chipBlocks.length}`);
+const chipNames = chipBlocks.flatMap((block) => [...block[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].map((item) => item[1]
+  .replace(/<span class="visually-hidden">[\s\S]*?<\/span>/g, '')
+  .replace(/<[^>]+>/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()));
+assert(chipNames.length > 0, 'missing skill chips');
+const chipKeys = chipNames.map((name) => name.toLowerCase());
+const duplicateChips = chipKeys.filter((name, index) => chipKeys.indexOf(name) !== index);
+assert(duplicateChips.length === 0, `duplicate skill chips: ${duplicateChips.join(', ')}`);
+assert(!/\d+\s*%|\bexpert\b/i.test(skillSection), 'skill bars, percentages and expert labels are not allowed');
+
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
 assert(
   collapsed.includes('Open to internships, junior roles and collaborations'),
