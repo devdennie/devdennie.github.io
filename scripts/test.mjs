@@ -197,7 +197,12 @@ assert(!/tel:/i.test(withoutAllowedPhone), 'a phone link is not allowed');
 assert(!/wa\.me/i.test(withoutAllowedPhone), 'an unexpected WhatsApp link is not allowed');
 assert(!/\+\d[\d\s()-]{6,}\d/.test(withoutAllowedPhone), 'an unexpected phone number is not allowed');
 
-assert(!/linkedin/i.test(html), 'a LinkedIn link is not allowed');
+const linkedinLinks = [...html.matchAll(/<a\b[^>]*href="https:\/\/www\.linkedin\.com\/in\/dennis-kabaso-67389b3a0\/"[^>]*>/g)];
+assert(linkedinLinks.length === 1, `expected exactly one LinkedIn link, found ${linkedinLinks.length}`);
+const linkedinTag = linkedinLinks[0]?.[0] ?? '';
+assert(/\btarget="_blank"/.test(linkedinTag), 'LinkedIn link should use target="_blank"');
+assert(/\brel="noopener noreferrer"/.test(linkedinTag), 'LinkedIn link should use rel="noopener noreferrer"');
+assert(linkedinTag.includes('aria-label="LinkedIn"') && linkedinTag.includes('title="LinkedIn"'), 'LinkedIn icon should be named LinkedIn');
 assert(!/<form[\s>]/i.test(html), 'a contact form is not allowed');
 
 const stylesheetTags = [...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/gi)].map((match) => match[0]);
