@@ -582,6 +582,34 @@ a {
   }
 }
 
+.contact-icons {
+  gap: 0.85rem;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border: 1.5px solid var(--text);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.icon-button:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+.icon-button:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
 }

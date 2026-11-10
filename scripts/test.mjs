@@ -155,7 +155,14 @@ assert(
 assert(html.includes('href="mailto:Dennis.kabaso03@gmail.com"'), 'missing the email link');
 assert(html.includes('href="https://wa.me/260767488673"'), 'missing the WhatsApp link');
 assert(html.includes('href="https://www.instagram.com/dennienotdennis/"'), 'missing the Instagram link');
-assert(html.includes('+260 767 488 673'), 'missing the displayed WhatsApp number');
+assert(html.includes('aria-label="Email Dennis"') && html.includes('title="Email Dennis"'), 'missing the email icon name');
+assert(html.includes('aria-label="WhatsApp"') && html.includes('title="WhatsApp"'), 'missing the WhatsApp icon name');
+assert(html.includes('aria-label="Instagram"') && html.includes('title="Instagram"'), 'missing the Instagram icon name');
+assert(html.includes('aria-label="GitHub"') && html.includes('title="GitHub"'), 'missing the GitHub icon name');
+assert(!html.includes('+260 767 488 673'), 'the WhatsApp number should not be a visible label');
+const iconCss = readFileSync(join(root, 'src/styles.css'), 'utf8');
+assert(/\.icon-button\s*\{[\s\S]*?min-height:\s*(?:4[4-9]|[5-9]\d)px/.test(iconCss), 'icon buttons should be at least 44px');
+assert(/\.icon-button:focus-visible\s*\{[\s\S]*?outline\s*:/.test(iconCss), 'icon buttons need a visible focus style');
 
 const withoutAllowedEmail = html.replaceAll('mailto:Dennis.kabaso03@gmail.com', '').replaceAll('Dennis.kabaso03@gmail.com', '');
 assert(!/mailto:/i.test(withoutAllowedEmail), 'an unexpected email link is not allowed');
