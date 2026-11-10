@@ -28,6 +28,26 @@ for (const id of ['main', 'work', 'about', 'projects', 'contact']) {
   assert(html.includes(`id="${id}"`), `missing #${id}`);
 }
 
+const mainHtml = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
+const sectionOrder = ['projects', 'work', 'about', 'contact'].map((id) => mainHtml.indexOf(`id="${id}"`));
+assert(
+  sectionOrder.every((index) => index !== -1)
+    && sectionOrder[0] < sectionOrder[1]
+    && sectionOrder[1] < sectionOrder[2]
+    && sectionOrder[2] < sectionOrder[3],
+  'sections should run projects, skills, about, then contact',
+);
+
+const navHtml = html.slice(html.indexOf('<nav'), html.indexOf('</nav>'));
+const navOrder = ['#projects', '#work', '#about', '#contact'].map((href) => navHtml.indexOf(`href="${href}"`));
+assert(
+  navOrder.every((index) => index !== -1)
+    && navOrder[0] < navOrder[1]
+    && navOrder[1] < navOrder[2]
+    && navOrder[2] < navOrder[3],
+  'nav should run Projects, Skills, About, then Contact',
+);
+
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
 assert(html.includes('BookIt Lusaka'), 'missing BookIt Lusaka');
 assert(!html.includes('Bookit'), 'Bookit should be spelled BookIt');
