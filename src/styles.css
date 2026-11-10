@@ -222,6 +222,18 @@ a {
   font-size: 1.125rem;
 }
 
+.status-line {
+  margin-top: 1.15rem;
+  max-width: 38rem;
+}
+
+.status-line .kicker-mark {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.45;
+  white-space: normal;
+}
+
 .cursor {
   display: inline-block;
   width: 0.42em;
@@ -332,23 +344,87 @@ a {
   scroll-margin-top: 8.5rem;
 }
 
-.value-grid {
+.skill-groups {
   display: grid;
-  gap: 2rem;
+  gap: 1.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.value-grid h3 {
+.skill-groups > li {
+  min-width: 0;
+}
+
+.skill-groups h3 {
   margin: 0 0 0.75rem;
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
   letter-spacing: -0.035em;
   line-height: 0.95;
 }
 
-.value-grid p {
-  max-width: 28ch;
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.4rem 0.85rem;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.skill-chip {
+  border-color: var(--text);
+  font-weight: 600;
+}
+
+a.skill-chip:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+a.skill-chip:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
+}
+
+.skill-practices {
+  margin: 0.85rem 0 0;
+  max-width: 42rem;
   color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.skill-practices a {
+  color: var(--text);
+  font-weight: 600;
+  text-underline-offset: 0.22em;
+}
+
+.skill-practices a:hover {
+  color: var(--lime);
+}
+
+.skill-practices a:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
 }
 
 .prose {
@@ -384,23 +460,15 @@ a {
 }
 
 @media (min-width: 800px) {
-  .value-grid {
+  .skill-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 2.5rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .skill-groups {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0;
-  }
-
-  .value-grid article {
-    padding-inline: 1.75rem;
-    border-left: 1px solid var(--border);
-  }
-
-  .value-grid article:first-of-type {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .value-grid article:last-of-type {
-    padding-right: 0;
   }
 }
 
@@ -497,6 +565,117 @@ a {
   .project-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+
+.project-list-featured {
+  grid-template-columns: 1fr;
+}
+
+.project-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: #1b1c17;
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+  height: 100%;
+}
+
+.project-facts {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.project-facts div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.project-facts dt {
+  color: var(--lime);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-facts dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.project-body .project-links {
+  margin-top: auto;
+}
+
+.more-projects {
+  margin: 2.75rem 0 0;
+}
+
+.project-list-compact {
+  margin-top: 0.35rem;
+}
+
+.project-list-compact .project-card h3 {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+}
+
+@media (min-width: 720px) {
+  .project-list-featured {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 800px) {
+  .project-featured .project-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: stretch;
+    gap: 1.25rem 1.5rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .project-list-featured {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-icons {
+  gap: 0.85rem;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border: 1.5px solid var(--text);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.icon-button:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+.icon-button:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
 }
 
 .site-footer {
