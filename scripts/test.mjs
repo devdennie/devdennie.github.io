@@ -115,6 +115,8 @@ function walk(dir, found = []) {
 const dist = join(root, 'dist');
 assert(existsSync(join(dist, 'assets', 'hero', 'dennis-cutout.webp')), 'portrait webp was not copied into dist');
 assert(existsSync(join(dist, 'assets', 'hero', 'dennis-cutout.png')), 'portrait png was not copied into dist');
+const cutoutPng = join(root, 'public', 'assets', 'hero', 'dennis-cutout.png');
+assert(existsSync(cutoutPng) && statSync(cutoutPng).size < 409600, 'cutout png fallback must be under 400 KB');
 for (const path of existsSync(dist) ? walk(dist) : []) {
   if (!['.html', '.css', '.js'].includes(extname(path))) continue;
   const text = readFileSync(path, 'utf8');
