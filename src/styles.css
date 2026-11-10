@@ -222,6 +222,18 @@ a {
   font-size: 1.125rem;
 }
 
+.status-line {
+  margin-top: 1.15rem;
+  max-width: 38rem;
+}
+
+.status-line .kicker-mark {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.45;
+  white-space: normal;
+}
+
 .cursor {
   display: inline-block;
   width: 0.42em;

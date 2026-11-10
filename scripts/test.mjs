@@ -50,6 +50,14 @@ assert(
 
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
 assert(
+  collapsed.includes('Open to internships, junior roles and collaborations'),
+  'missing the hero open-to-work line',
+);
+assert(
+  collapsed.includes("I'm open to internships, junior roles, partnerships, collaborations and projects in software development, data analysis and IT."),
+  'missing the contact open-to-work line',
+);
+assert(
   /<meta name="description" content="[^"]{80,}"/.test(html),
   'missing a meta description',
 );
