@@ -136,6 +136,22 @@ for (const link of requiredLinks) {
   assert(html.includes(link), `missing link ${link}`);
 }
 
+const cvLink = html.match(/<a\b[^>]*href="\/resume\.pdf"[^>]*>[\s\S]*?<\/a>/);
+assert(cvLink, 'missing the CV link');
+assert(cvLink && /\bdownload=/.test(cvLink[0]), 'CV link should have a download attribute');
+const cvLabel = cvLink ? cvLink[0].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
+assert(cvLabel === 'Download CV (PDF)', `CV link should be labelled Download CV (PDF), got ${cvLabel}`);
+const resumePublic = join(root, 'public', 'resume.pdf');
+const resumeDist = join(root, 'dist', 'resume.pdf');
+assert(existsSync(resumePublic), 'public/resume.pdf is missing');
+assert(existsSync(resumeDist), 'dist/resume.pdf is missing');
+assert(
+  existsSync(resumePublic)
+    && existsSync(resumeDist)
+    && readFileSync(resumePublic).equals(readFileSync(resumeDist)),
+  'dist/resume.pdf should match public/resume.pdf byte for byte',
+);
+
 assert(html.includes('href="mailto:Dennis.kabaso03@gmail.com"'), 'missing the email link');
 assert(html.includes('href="https://wa.me/260767488673"'), 'missing the WhatsApp link');
 assert(html.includes('href="https://www.instagram.com/dennienotdennis/"'), 'missing the Instagram link');
