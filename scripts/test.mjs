@@ -188,6 +188,21 @@ for (const path of existsSync(dist) ? walk(dist) : []) {
 
 assert(html.includes('href="/assets/') || html.includes("href='/assets/"), "built assets should be served from '/'");
 
+const notFoundPath = join(dist, '404.html');
+assert(existsSync(notFoundPath), 'dist/404.html is missing');
+const notFound = existsSync(notFoundPath) ? readFileSync(notFoundPath, 'utf8') : '';
+assert(notFound.includes('Page not found'), '404 page is missing its heading');
+assert(notFound.includes('href="/"'), '404 page should link home');
+assert(!/<form[\s>]/i.test(notFound), '404 page should not include a form');
+
+const robots = existsSync(join(dist, 'robots.txt')) ? readFileSync(join(dist, 'robots.txt'), 'utf8') : '';
+assert(robots.includes('User-agent: *'), 'robots.txt should name a user agent');
+assert(robots.includes('Allow: /'), 'robots.txt should allow all');
+assert(robots.includes('Sitemap: https://devdennie.github.io/sitemap.xml'), 'robots.txt should point at the sitemap');
+
+const sitemap = existsSync(join(dist, 'sitemap.xml')) ? readFileSync(join(dist, 'sitemap.xml'), 'utf8') : '';
+assert(sitemap.includes('https://devdennie.github.io/'), 'sitemap should list the homepage');
+
 if (failures.length > 0) {
   console.error(`\n${failures.length} check(s) failed:`);
   for (const failure of failures) console.error(`- ${failure}`);
