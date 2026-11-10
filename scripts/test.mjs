@@ -69,6 +69,20 @@ assert((html.match(/badge-demo/g) || []).length === 2, 'the two sites should be 
 const cards = [...html.matchAll(/<article class="project-card">([\s\S]*?)<\/article>/g)].map((match) => match[1]);
 assert(cards.length === 6, `expected 6 project cards, found ${cards.length}`);
 
+const shots = [...html.matchAll(/<img\b[^>]*class="project-shot"[^>]*>/g)].map((match) => match[0]);
+assert(shots.length === 3, `expected 3 project screenshots, found ${shots.length}`);
+for (const shot of shots) {
+  assert(/\bwidth="\d+"/.test(shot), `project screenshot is missing width: ${shot}`);
+  assert(/\bheight="\d+"/.test(shot), `project screenshot is missing height: ${shot}`);
+  assert(/loading="lazy"/.test(shot), `project screenshot should load lazy: ${shot}`);
+}
+for (const name of ['bookit-lusaka.webp', 'zeddrive.webp', 'lusaka-food-prices.webp']) {
+  const shotPath = join(root, 'dist', 'assets', 'projects', name);
+  assert(existsSync(shotPath), `missing project image ${name}`);
+  assert(statSync(shotPath).size < 150 * 1024, `${name} should be under 150 KB`);
+  assert(html.includes(`/assets/projects/${name}`), `page is missing ${name}`);
+}
+
 for (const card of cards) {
   const title = card.match(/<h3>([^<]+)<\/h3>/)?.[1]?.trim();
   const description = card.match(/class="project-summary">([\s\S]*?)<\/p>/)?.[1]?.replace(/\s+/g, ' ').trim();
