@@ -49,6 +49,24 @@ assert(
 );
 
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
+assert(
+  /<meta name="description" content="[^"]{80,}"/.test(html),
+  'missing a meta description',
+);
+assert(html.includes('<link rel="canonical" href="https://devdennie.github.io/">'), 'missing the canonical URL');
+assert(html.includes('property="og:type" content="website"'), 'missing og:type');
+assert(html.includes('property="og:title" content="Dennis Kabaso — Computer Science student"'), 'missing og:title');
+assert(html.includes('property="og:url" content="https://devdennie.github.io/"'), 'missing og:url');
+assert(html.includes('property="og:image" content="https://devdennie.github.io/og-image.png"'), 'missing og:image');
+assert(html.includes('name="twitter:card" content="summary_large_image"'), 'missing the Twitter card');
+assert(html.includes('name="twitter:image" content="https://devdennie.github.io/og-image.png"'), 'missing twitter:image');
+{
+  const ogPath = join(root, 'dist', 'og-image.png');
+  assert(existsSync(ogPath), 'dist/og-image.png is missing');
+  const og = readFileSync(ogPath);
+  assert(og.length < 300 * 1024, `og image should be under 300 KB, got ${og.length}`);
+  assert(og.readUInt32BE(16) === 1200 && og.readUInt32BE(20) === 630, 'og image should be 1200x630');
+}
 assert(html.includes('BookIt Lusaka'), 'missing BookIt Lusaka');
 assert(!html.includes('Bookit'), 'Bookit should be spelled BookIt');
 assert(collapsed.includes('NIPA'), 'missing NIPA');
