@@ -29,6 +29,8 @@ for (const id of ['main', 'work', 'about', 'projects', 'contact']) {
 }
 
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
+assert(html.includes('BookIt Lusaka'), 'missing BookIt Lusaka');
+assert(!html.includes('Bookit'), 'Bookit should be spelled BookIt');
 assert(collapsed.includes('NIPA'), 'missing NIPA');
 assert(collapsed.includes('ICTAZ'), 'missing ICTAZ');
 assert(!html.includes('alt="Terminal prompt illustration"'), 'terminal illustration should be gone from the hero');
