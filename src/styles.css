@@ -286,22 +286,6 @@ a {
   align-items: center;
 }
 
-.hero-figure {
-  margin: 0;
-}
-
-.hero-frame {
-  border: 1px solid var(--border);
-  border-radius: 1.75rem;
-  padding: clamp(0.4rem, 1.5vw, 1rem);
-}
-
-.hero-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 @media (min-width: 800px) {
   .hero-grid {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -310,15 +294,35 @@ a {
 }
 
 .hero-visuals {
-  display: grid;
-  justify-items: center;
-  gap: 1.5rem;
+  width: 100%;
 }
 
-.hero-portrait,
-.hero-portrait img {
+.hero-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #13140f;
+}
+
+.hero-burst {
+  position: absolute;
+  inset: 0;
   display: block;
-  width: min(100%, 320px);
+  width: 100%;
+  height: 100%;
+}
+
+.hero-art picture {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 74%;
+  transform: translateX(-50%);
+}
+
+.hero-art img {
+  display: block;
+  width: 100%;
   height: auto;
 }
 
