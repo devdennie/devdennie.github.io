@@ -315,7 +315,8 @@ a {
   gap: 1.5rem;
 }
 
-.hero-portrait {
+.hero-portrait,
+.hero-portrait img {
   display: block;
   width: min(100%, 320px);
   height: auto;
