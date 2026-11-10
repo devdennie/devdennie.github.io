@@ -31,10 +31,15 @@ for (const id of ['main', 'work', 'about', 'projects', 'contact']) {
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
 assert(collapsed.includes('NIPA'), 'missing NIPA');
 assert(collapsed.includes('ICTAZ'), 'missing ICTAZ');
-assert(html.includes('alt="Terminal prompt illustration"'), 'hero alt text is missing or changed');
+assert(!html.includes('alt="Terminal prompt illustration"'), 'terminal illustration should be gone from the hero');
 assert(html.includes('alt="Dennis Kabaso"'), 'portrait alt text is missing');
 assert(html.includes('srcset="/assets/hero/dennis-cutout.webp"'), 'portrait webp source is missing');
 assert(html.includes('src="/assets/hero/dennis-cutout.png"'), 'portrait png path is missing');
+assert(
+  /<svg\b[^>]*class="hero-burst"[^>]*\baria-hidden="true"/.test(html)
+    || /<svg\b[^>]*\baria-hidden="true"[^>]*class="hero-burst"/.test(html),
+  'burst svg should be aria-hidden',
+);
 assert(!/D3VCorp|founder|\bCEO\b/i.test(collapsed), 'founder, CEO, and D3VCorp wording are not allowed');
 assert(collapsed.includes('Skip to content'), 'missing the skip link');
 assert((html.match(/badge-demo/g) || []).length === 2, 'the two sites should be labelled Demo');
