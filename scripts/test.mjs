@@ -63,6 +63,8 @@ assert(duplicateChips.length === 0, `duplicate skill chips: ${duplicateChips.joi
 assert(!/\d+\s*%|\bexpert\b/i.test(skillSection), 'skill bars, percentages and expert labels are not allowed');
 
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
+assert(!html.includes('See the work'), 'the See the work link should be gone');
+assert(html.includes('href="/resume.pdf"'), 'the CV download should stay in the hero');
 assert(
   collapsed.includes('Open to internships, junior roles and collaborations'),
   'missing the hero open-to-work line',
