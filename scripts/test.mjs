@@ -63,6 +63,24 @@ assert(duplicateChips.length === 0, `duplicate skill chips: ${duplicateChips.joi
 assert(!/\d+\s*%|\bexpert\b/i.test(skillSection), 'skill bars, percentages and expert labels are not allowed');
 
 assert(collapsed.includes('Dennis Kabaso'), 'missing the name');
+assert(!html.includes('See the work'), 'the See the work link should be gone');
+const ledeMarkup = html.match(/<p class="lede">([\s\S]*?)<\/p>/)?.[1] ?? '';
+const ledeText = ledeMarkup
+  .replace(/<span class="prompt"[\s\S]*?<\/span>/g, '')
+  .replace(/<[^>]+>/g, '')
+  .replace(/\s+/g, ' ')
+  .trim();
+assert(
+  ledeText === 'I write web applications and Python analysis notebooks, and I lead the ICTAZ NIPA Student Chapter.',
+  `the intro text should stay in the page, got ${ledeText}`,
+);
+const siteCss = readFileSync(join(root, 'src/styles.css'), 'utf8');
+assert(
+  /@media\s*\(\s*prefers-reduced-motion:\s*reduce\s*\)/.test(siteCss),
+  'missing a prefers-reduced-motion rule',
+);
+assert(/animation:\s*none/.test(siteCss), 'reduced motion should stop the typing animation');
+assert(html.includes('href="/resume.pdf"'), 'the CV download should stay in the hero');
 assert(
   collapsed.includes('Open to internships, junior roles and collaborations'),
   'missing the hero open-to-work line',
